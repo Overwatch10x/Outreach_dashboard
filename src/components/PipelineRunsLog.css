@@ -1,0 +1,49 @@
+.prl-card {
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.prl-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 12px;
+}
+
+.prl-count {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.prl-time {
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.row-failed td {
+  background: rgba(239, 68, 68, 0.04);
+}
+
+.prl-error-cell {
+  max-width: 280px;
+  font-size: 12px;
+}
+
+.prl-error-text {
+  color: var(--failure);
+  word-break: break-word;
+}
+
+.expand-btn {
+  margin-left: 6px;
+  padding: 1px 6px;
+  font-size: 11px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-badge);
+  cursor: pointer;
+  font-family: inherit;
+}
+.expand-btn:hover { background: rgba(59,130,246,0.1); }

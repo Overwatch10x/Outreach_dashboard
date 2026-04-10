@@ -1,0 +1,29 @@
+.dup-card {
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.dup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 12px;
+}
+
+.dup-badge {
+  font-size: 11px;
+}
+
+.dup-company {
+  font-weight: 500;
+}
+
+.dup-users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.dup-user-badge {
+  font-size: 11px;
+}

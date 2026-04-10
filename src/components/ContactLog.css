@@ -1,0 +1,36 @@
+.cl-card {
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.cl-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 12px;
+}
+
+.cl-count {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.cl-time {
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.contact-name { font-weight: 500; }
+
+.cl-email {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+.cl-linkedin {
+  font-size: 12px;
+  color: var(--accent);
+  white-space: nowrap;
+}

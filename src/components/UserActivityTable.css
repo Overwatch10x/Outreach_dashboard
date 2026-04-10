@@ -1,0 +1,37 @@
+.uat-card {
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.uat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 12px;
+}
+
+.uat-count {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+.sortable:hover { color: var(--text-primary); }
+
+.sort-arrow { margin-left: 4px; font-size: 10px; color: var(--accent); }
+.sort-arrow.muted { color: var(--card-border); }
+
+.user-name { font-weight: 500; }
+.muted-text { color: var(--text-muted); }
+.success-text { color: var(--success); }
+.failure-text { color: var(--failure); }
+
+.key-approved { color: var(--success); font-size: 13px; }
+.key-rejected { color: var(--failure); font-size: 13px; }
