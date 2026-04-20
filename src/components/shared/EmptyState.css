@@ -1,0 +1,11 @@
+.empty-state-enhanced {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+  gap: 12px;
+}
+.empty-state-icon { opacity: 0.3; }
+.empty-state-title { font-size: 15px; font-weight: 500; color: var(--text-secondary); }
+.empty-state-subtitle { font-size: 13px; text-align: center; max-width: 300px; }

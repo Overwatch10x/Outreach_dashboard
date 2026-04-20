@@ -1,14 +1,12 @@
 import { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useDashboardData } from './hooks/useDashboardData';
-import Header from './components/Header';
-import UserNav from './components/UserNav';
-import SummaryCards from './components/SummaryCards';
-import UserActivityTable from './components/UserActivityTable';
-import PipelineRunsLog from './components/PipelineRunsLog';
-import FailureBreakdown from './components/FailureBreakdown';
-import ApolloKeyStatus from './components/ApolloKeyStatus';
-import DuplicateOutreach from './components/DuplicateOutreach';
-import ContactLog from './components/ContactLog';
+import DashboardLayout from './components/layout/DashboardLayout';
+import OverviewPage from './pages/OverviewPage';
+import PipelinePage from './pages/PipelinePage';
+import ContactsPage from './pages/ContactsPage';
+import KeysPage from './pages/KeysPage';
+import ReportsPage from './pages/ReportsPage';
 import './App.css';
 
 // Filters all derived data to a single user without re-fetching Supabase.
@@ -90,68 +88,40 @@ export default function App() {
   const data = useDashboardData(timeRange);
   const view = filterDataByUser(data, selectedUser);
 
+  const selectedUserName = selectedUser
+    ? (data.userStats.find(u => u.userId === selectedUser)?.displayName ?? selectedUser)
+    : null;
+
+  const layoutProps = {
+    timeRange,
+    onTimeRangeChange: range => { setTimeRange(range); setSelectedUser(null); },
+    selectedUser,
+    selectedUserName,
+    onClearUser: () => setSelectedUser(null),
+    lastRefreshed: data.lastRefreshed,
+    onRefresh: data.refresh,
+    loading: data.loading,
+  };
+
+  const pageProps = {
+    data,
+    view,
+    selectedUser,
+    onSelectUser: setSelectedUser,
+  };
+
   return (
-    <div className="app">
-      <Header
-        lastRefreshed={data.lastRefreshed}
-        timeRange={timeRange}
-        onTimeRangeChange={range => { setTimeRange(range); setSelectedUser(null); }}
-        onRefresh={data.refresh}
-      />
-
-      {/* User selector — always shows all users, filters the rest of the dashboard */}
-      <UserNav
-        userStats={data.userStats}
-        selectedUser={selectedUser}
-        onSelectUser={setSelectedUser}
-      />
-
-      {data.error && (
-        <div className="error-banner">
-          Failed to load data: {data.error}. Retrying in 60s…
-        </div>
-      )}
-
-      {data.loading && !data.lastRefreshed && (
-        <div className="loading-overlay">
-          <div className="spinner" />
-          Loading dashboard data…
-        </div>
-      )}
-
-      {selectedUser && (
-        <div className="filter-active-banner">
-          Showing data for <strong>{data.userStats.find(u => u.userId === selectedUser)?.displayName ?? selectedUser}</strong>
-          <button onClick={() => setSelectedUser(null)}>✕ Clear filter</button>
-        </div>
-      )}
-
-      <SummaryCards
-        totalRuns={view.summary.totalRuns}
-        successRate={view.summary.successRate}
-        totalContacts={view.summary.totalContacts}
-        activeUsers={view.summary.activeUsers}
-      />
-
-      <UserActivityTable userStats={view.userStats} />
-
-      <div className="section-row">
-        <PipelineRunsLog runs={view.raw.pipelineRuns} />
-        <FailureBreakdown
-          byPhase={view.failures.byPhase}
-          topErrors={view.failures.topErrors}
-        />
-      </div>
-
-      <ApolloKeyStatus
-        registered={view.keyHealth.registered}
-        unregistered={view.keyHealth.unregistered}
-        creditUsage={view.creditUsage}
-      />
-
-      <DuplicateOutreach duplicates={view.duplicates} />
-
-      <ContactLog contacts={view.raw.contacts} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<DashboardLayout {...layoutProps} />}>
+          <Route path="/" element={<OverviewPage {...pageProps} />} />
+          <Route path="/pipeline" element={<PipelinePage {...pageProps} />} />
+          <Route path="/contacts" element={<ContactsPage {...pageProps} />} />
+          <Route path="/keys" element={<KeysPage {...pageProps} />} />
+          <Route path="/reports" element={<ReportsPage {...pageProps} />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }

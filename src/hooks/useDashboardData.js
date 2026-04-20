@@ -52,10 +52,15 @@ function deriveData(users, pipelineRuns, contacts, apiKeys) {
     const apolloKey = userRow?.apollo_key ?? null;
     const keyEntry = apolloKey ? apiKeySet.get(apolloKey) : null;
 
+    // pipelineRuns is fetched ORDER BY created_at DESC, so userRuns[0] is the most recent run.
+    // Use that instead of users.last_active, which gets updated whenever the extension opens
+    // (not just when a run happens), causing it to show misleadingly recent timestamps.
+    const lastRunAt = userRuns.length > 0 ? userRuns[0].created_at : null;
+
     return {
       userId,
       displayName: userRow?.display_name ?? userId,
-      lastActive: userRow?.last_active ?? null,
+      lastActive: lastRunAt ?? userRow?.last_active ?? null,
       totalRuns: userRuns.length,
       successes,
       failures,
