@@ -1,0 +1,55 @@
+.dat-card {
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.dat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.dat-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.dat-date-input {
+  background: var(--card-bg, #1a1d2e);
+  border: 1px solid var(--card-border, #2a2d3e);
+  border-radius: 6px;
+  color: var(--text-primary, #e2e8f0);
+  font-size: 13px;
+  padding: 4px 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.dat-date-input:focus {
+  border-color: var(--accent, #3b82f6);
+}
+
+.dat-count {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.dat-user-name {
+  font-weight: 500;
+}
+
+.dat-total-row td {
+  font-weight: 600;
+  border-top: 1px solid var(--card-border, #2a2d3e);
+  padding-top: 8px;
+  color: var(--text-primary);
+}

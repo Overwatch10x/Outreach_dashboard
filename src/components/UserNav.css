@@ -30,21 +30,22 @@
   border: 1px solid var(--card-border);
   border-radius: var(--radius-card);
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
   white-space: nowrap;
   flex-shrink: 0;
   font-family: inherit;
   text-align: left;
+  backdrop-filter: blur(12px);
 }
 
 .user-card:hover {
-  border-color: #3d4152;
-  background: var(--row-hover);
+  border-color: var(--card-border-hover);
+  background: rgba(255,255,255,0.04);
 }
 
 .user-card.selected {
   border-color: var(--accent);
-  background: rgba(59, 130, 246, 0.08);
+  background: var(--accent-muted);
   box-shadow: 0 0 0 1px var(--accent);
 }
 
@@ -68,7 +69,7 @@
 }
 
 .user-card-all .user-card-avatar.all-avatar {
-  background: var(--card-border);
+  background: rgba(255,255,255,0.06);
   color: var(--text-muted);
   font-size: 11px;
   font-weight: 600;
@@ -83,7 +84,8 @@
   height: 10px;
   border-radius: 50%;
   background: var(--success);
-  border: 2px solid var(--card-bg);
+  border: 2px solid var(--card-bg-solid);
+  animation: pulse-dot 2s ease-in-out infinite;
 }
 
 /* ── Info ── */

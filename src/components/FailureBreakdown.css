@@ -7,21 +7,24 @@
   padding: 20px 20px 12px;
 }
 
-.fb-panels {
+.fb-charts-row {
   display: flex;
   gap: 0;
+  border-bottom: 1px solid var(--card-border);
 }
 
 .fb-chart-panel {
   flex: 1;
   padding: 0 20px 20px;
-  border-right: 1px solid var(--card-border);
   min-width: 0;
 }
 
+.fb-chart-panel:first-child {
+  border-right: 1px solid var(--card-border);
+}
+
 .fb-errors-panel {
-  flex: 1.4;
-  min-width: 0;
+  padding: 16px 20px 20px;
   overflow-x: auto;
 }
 
@@ -36,14 +39,28 @@
 
 .fb-error-msg {
   font-size: 12px;
-  max-width: 340px;
+  max-width: 400px;
   word-break: break-word;
 }
 
+.fb-error-text {
+  color: var(--text-secondary);
+}
+
+.fb-count {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.fb-date {
+  white-space: nowrap;
+  font-size: 12px;
+}
+
 .chart-tooltip {
-  background: var(--card-bg);
+  background: var(--card-bg-solid);
   border: 1px solid var(--card-border);
-  border-radius: var(--radius-badge);
+  border-radius: var(--radius-md);
   padding: 8px 12px;
   font-size: 12px;
 }
@@ -58,12 +75,35 @@
   font-weight: 600;
 }
 
+/* Severity badges */
+.sev-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: var(--radius-badge);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.sev-high { background: rgba(244,63,94,0.15);   color: #f43f5e; }
+.sev-med  { background: rgba(245,158,11,0.15);  color: #f59e0b; }
+.sev-low  { background: rgba(100,116,139,0.12); color: #64748b; }
+
+.fb-copy-btn {
+  padding: 3px 9px;
+  font-size: 11px;
+  background: none;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-badge);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.fb-copy-btn:hover { color: var(--text-primary); border-color: var(--card-border-hover); }
+.fb-copy-btn.copied { color: var(--success); border-color: var(--success); }
+
 @media (max-width: 768px) {
-  .fb-panels {
-    flex-direction: column;
-  }
-  .fb-chart-panel {
-    border-right: none;
-    border-bottom: 1px solid var(--card-border);
-  }
+  .fb-charts-row { flex-direction: column; }
+  .fb-chart-panel:first-child { border-right: none; border-bottom: 1px solid var(--card-border); }
 }

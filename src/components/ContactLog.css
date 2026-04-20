@@ -15,6 +15,60 @@
   color: var(--text-muted);
 }
 
+.cl-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px 16px;
+  flex-wrap: wrap;
+}
+
+.cl-controls .search-input-wrap {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Stats bar */
+.cl-stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 12px 20px;
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 16px;
+}
+
+.cl-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 20px;
+}
+
+.cl-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--card-border);
+}
+
+.cl-stat-val {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text-primary);
+}
+.cl-stat-accent  { color: var(--accent); }
+.cl-stat-teal    { color: #06b6d4; }
+.cl-stat-success { color: var(--success); }
+
+.cl-stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Table */
 .cl-time {
   color: var(--text-muted);
   white-space: nowrap;
@@ -23,11 +77,43 @@
 
 .contact-name { font-weight: 500; }
 
+.cl-email-cell {
+  max-width: 200px;
+}
+
+.cl-email-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .cl-email {
   font-size: 12px;
   color: var(--text-muted);
   font-family: monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
 }
+
+.cl-copy-btn {
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+tbody tr:hover .cl-copy-btn { opacity: 1; }
+.cl-copy-btn:hover { color: var(--text-primary); border-color: var(--card-border); }
+.cl-copy-btn.copied { color: var(--success); opacity: 1; }
 
 .cl-linkedin {
   font-size: 12px;

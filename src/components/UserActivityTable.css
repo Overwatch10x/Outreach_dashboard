@@ -15,10 +15,6 @@
   color: var(--text-muted);
 }
 
-.table-scroll {
-  overflow-x: auto;
-}
-
 .sortable {
   cursor: pointer;
   user-select: none;
@@ -28,10 +24,50 @@
 .sort-arrow { margin-left: 4px; font-size: 10px; color: var(--accent); }
 .sort-arrow.muted { color: var(--card-border); }
 
-.user-name { font-weight: 500; }
-.muted-text { color: var(--text-muted); }
-.success-text { color: var(--success); }
-.failure-text { color: var(--failure); }
+.uat-user-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.uat-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.uat-bar-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 80px;
+}
+
+.uat-bar-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  min-width: 40px;
+}
+
+.uat-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.uat-bar-accent  { background: var(--accent); }
+.uat-bar-success { background: var(--success); }
+.uat-bar-failure { background: var(--failure); }
 
 .key-approved { color: var(--success); font-size: 13px; }
 .key-rejected { color: var(--failure); font-size: 13px; }

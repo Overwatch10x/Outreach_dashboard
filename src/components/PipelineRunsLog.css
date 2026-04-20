@@ -15,6 +15,19 @@
   color: var(--text-muted);
 }
 
+.prl-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px 16px;
+  flex-wrap: wrap;
+}
+
+.prl-controls .search-input-wrap {
+  flex: 1;
+  min-width: 200px;
+}
+
 .prl-time {
   color: var(--text-muted);
   white-space: nowrap;
@@ -22,7 +35,7 @@
 }
 
 .row-failed td {
-  background: rgba(239, 68, 68, 0.04);
+  background: rgba(244, 63, 94, 0.04);
 }
 
 .prl-error-cell {
@@ -41,9 +54,30 @@
   font-size: 11px;
   background: transparent;
   color: var(--accent);
-  border: 1px solid var(--accent);
+  border: 1px solid rgba(99,102,241,0.4);
   border-radius: var(--radius-badge);
   cursor: pointer;
   font-family: inherit;
 }
-.expand-btn:hover { background: rgba(59,130,246,0.1); }
+.expand-btn:hover { background: var(--accent-muted); }
+
+.prl-duration {
+  font-size: 12px;
+  font-family: monospace;
+  white-space: nowrap;
+}
+.dur-fast   { color: var(--success); }
+.dur-medium { color: var(--warning); }
+.dur-slow   { color: var(--failure); }
+
+.pagination-active {
+  background: var(--accent) !important;
+  color: white !important;
+  border-color: var(--accent) !important;
+}
+
+.pagination-ellipsis {
+  color: var(--text-muted);
+  padding: 4px 6px;
+  font-size: 13px;
+}
